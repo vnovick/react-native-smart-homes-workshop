@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "deploy-presentation": "cd presentation && npm run clean && npm run build && surge -p ./build",
-    "start": "cd presentation && npm start"
+    "present": "cd presentation && npm start",
+    "install": "cd presentation && yarn install"
   },
   "repository": {
     "type": "git",
