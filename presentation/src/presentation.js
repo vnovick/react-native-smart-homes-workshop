@@ -56,7 +56,7 @@ export default class Presentation extends React.Component {
           bgImage="https://ak9.picdn.net/shutterstock/videos/27477769/thumb/1.jpg"
           bgColor="primary"
           textSize=".8em"
-          code={require("raw-loader!./codesamples/example1")}
+          code={require("./codesamples/example1.sample")}
           ranges={[
             { loc: [1, 2], note: "import library" },
             { loc: [5, 12], note: "example code" }
