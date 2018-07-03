@@ -1,0 +1,21 @@
+{
+  "name": "presentation",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "raw-loader": "^0.5.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "spectacle-code-slide": "git://github.com/vnovick/spectacle-code-slide.git#master"
+  },
+  "devDependencies": {
+    "spectacle-scripts": "2.0.0"
+  }
+}

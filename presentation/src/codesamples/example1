@@ -1,0 +1,15 @@
+import CodeSlide from "spectacle-code-slide";
+
+<CodeSlide
+    transition={[]}
+    lang="jsx"
+    bgDarken={.8}
+    bgImage="https://ak9.picdn.net/shutterstock/videos/27477769/thumb/1.jpg"
+    bgColor="primary"
+    textSize=".8em"
+    code={require("raw-loader!../codesamples/example1")}
+    ranges={[
+      { loc: [1, 2], note: "import library" },
+      { loc: [5, 12], note: "example code" }
+    ]}
+  />
