@@ -16,7 +16,6 @@ import {
 } from 'react-native';
 import RootNavigator from './rootNavigator';
 import './config/ReactotronConfig'
-import { BackButtonHandler } from './components';
 import { SCREEN, FOOTER } from './theme';
 import hueStore from './stores/hueStore';
 import { Provider } from 'mobx-react';

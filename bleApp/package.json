@@ -1,5 +1,5 @@
 {
-  "name": "hueApp",
+  "name": "bleApp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -7,22 +7,27 @@
     "test": "jest"
   },
   "dependencies": {
+    "buffer": "^5.1.0",
     "jsc-android": "224109.x.x",
+    "lottie-react-native": "2.3.2",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
     "react": "16.3.1",
     "react-native": "0.55.4",
+    "react-native-ble-plx": "^0.9.1",
+    "react-native-collapsible": "^0.12.0",
     "react-native-color-picker": "^0.4.0",
+    "react-native-elements": "^0.19.1",
     "react-native-vector-icons": "^4.6.0",
-    "react-navigation": "^2.5.5"
+    "react-navigation": "^2.5.5",
+    "reactotron-react-native": "^1.14.0"
   },
   "devDependencies": {
     "babel-jest": "23.2.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "babel-preset-react-native": "4.0.0",
     "jest": "23.2.0",
-    "react-test-renderer": "16.3.1",
-    "reactotron-react-native": "^1.14.0"
+    "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"
