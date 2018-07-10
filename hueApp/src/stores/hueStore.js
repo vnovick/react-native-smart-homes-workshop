@@ -46,6 +46,7 @@ export default class hueStore {
   @action
   async checkInitialSetup(){
     // TODO: retrieve bridge IP and userName from AsyncStorage
+    // TODO: If there are no bridge Ip or username - seacrch for bridge
     // TODO: Bonus: check if bridge ip is not valid anymore
 
     const bridgeIp = await AsyncStorage.getItem('bridgeIp');
@@ -62,7 +63,7 @@ export default class hueStore {
 
   @action
   async searchForBridge(){
-    //TODO: use Philips Hue UPNP discovery service
+    //TODO: use Philips Hue UPNP discovery service to search for bridges
 
     const blob = await fetch(`https://www.meethue.com/api/nupnp`);
     const response = await blob.json();
@@ -74,7 +75,7 @@ export default class hueStore {
   @action 
   async connectToBridge(bridge){
     //TODO: Store bridge credentials in AsyncStorage
-    // TODO: get userName and update store username
+    // TODO: get userName from Philips Hue api and update store username
     this.activeBridgeIP = bridge.internalipaddress;
     AsyncStorage.setItem('bridgeIp', this.activeBridgeIP);
     await this.getHueUserName()
@@ -83,7 +84,8 @@ export default class hueStore {
   @action
   async getHueUserName() {
     //TODO: Get Hue user name
-    //TODO: Set username 
+    //TODO: Set username into AsyncStorage 
+    //TODO: Navigate to Lights screen
     const blob = await fetch(`http://${this.activeBridgeIP}/api/`, {
       method: "POST",
       body: JSON.stringify({
@@ -105,6 +107,7 @@ export default class hueStore {
   @action
   async getLights(){
     //TODO: getLigts action - call Philips Hue Light API
+    //TODO: Transform Lights object into Array and store in bridgeList observable
     const blob = await fetch(`http://${this.baseApiUrl}/lights`);
     const response = await blob.json();
     this.lightsList = Object.entries(response).map(entry => ({
@@ -116,7 +119,7 @@ export default class hueStore {
   @action
   async changeLightState(id, state){
     //TODO: change light state
-    //TODO: Refresh lights after state change
+    //TODO: Refetch lights after state change
     const blob = await fetch(`http://${this.baseApiUrl}/lights/${id}/state`, {
       method: "PUT",
       body: JSON.stringify(state)
@@ -124,6 +127,8 @@ export default class hueStore {
     this.getLights();
   }
 
+
+  // Navigate to SingleLightScreen
   @action
   setActiveLightBulb(item){
     this.activeLightBulbId = item.id;

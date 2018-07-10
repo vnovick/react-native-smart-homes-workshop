@@ -17,25 +17,27 @@ import {
 export const LightComponent = ({ data, onChangeState, onLightClick, children }) => (
   <TouchableOpacity onPress={() => onLightClick && onLightClick()}>
     <View style={[CONTAINER, styles.lightsContainer ]}>
-      <View style={ROW}>
-        <Icon 
-          name={data.state.on ? "lightbulb-on" : "lightbulb-outline"} 
-          size={30} 
-          color={colors.palette.white}
-        />
-        <Text style={HEADER_TITLE}>{data.name}</Text>
-        { data.config.archetype === 'sultanbulb' &&
-          <Icon name="palette" size={30} color={colors.palette.white} />
-        }
-        { !data.state.reachable &&
-          <Icon name="alert-outline" color={colors.palette.orangeDarker} size={20} />
-        }
-        <Switch value={data.state.on} onValueChange={() => {
-          onChangeState({
-            on: !data.state.on
-          })
-        }} />
-      </View>
+      { data.state && 
+        <View style={ROW}>
+          <Icon 
+            name={data.state.on ? "lightbulb-on" : "lightbulb-outline"} 
+            size={30} 
+            color={colors.palette.white}
+          />
+          <Text style={HEADER_TITLE}>{data.name}</Text>
+          { data.config.archetype === 'sultanbulb' &&
+            <Icon name="palette" size={30} color={colors.palette.white} />
+          }
+          { !data.state.reachable &&
+            <Icon name="alert-outline" color={colors.palette.orangeDarker} size={20} />
+          }
+          <Switch value={data.state.on} onValueChange={() => {
+            onChangeState({
+              on: !data.state.on
+            })
+          }} />
+        </View>
+      }
       <View>
         { children }
       </View>

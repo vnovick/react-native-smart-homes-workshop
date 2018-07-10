@@ -20,6 +20,7 @@ import { SCREEN, FOOTER } from './theme';
 import hueStore from './stores/hueStore';
 import { Provider } from 'mobx-react';
 import { setTopLevelNavigator } from './services/navigationService';
+import { navigate } from './services/navigationService';
 
 //$FlowFixMe
 console.ignoredYellowBox = ['Warning: isMounted'];
@@ -27,6 +28,9 @@ console.ignoredYellowBox = ['Warning: isMounted'];
 type Props = {};
 export default class App extends Component<Props> {
   
+  navigatorRef = {
+    navigate: () => {}
+  }
   
   render() {
     return (
@@ -36,10 +40,14 @@ export default class App extends Component<Props> {
           <RootNavigator 
             ref={navigatorRef => {
               setTopLevelNavigator(navigatorRef)
+              this.navigatorRef = navigatorRef
             }}
           />
           <View style={FOOTER}>
-            <Button title="clear cache" onPress={() => AsyncStorage.clear()}/>
+            <Button title="clear cache" onPress={() => {
+              AsyncStorage.clear()
+              navigate('Home')
+            }}/>
           </View>
         </View>
       </Provider>

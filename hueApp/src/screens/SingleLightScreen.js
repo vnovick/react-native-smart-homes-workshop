@@ -19,6 +19,7 @@ export class SingleLightScreen extends Component {
   }
 
   getColorPicker() {
+    //TODO: Bonus - change color state for hue color space. Use hex_to_xy util
     return (
       <ColorPicker
         defaultColor={"ffff00"}

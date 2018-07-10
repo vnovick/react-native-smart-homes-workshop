@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, StatusBar, Button, Platform, PermissionsAndroid } from 'react-native'
+import { View, StatusBar, YellowBox, Button, Platform, PermissionsAndroid } from 'react-native'
 import RootNavigator from './rootNavigator';
 import { inject, observer } from 'mobx-react'
 import { SCREEN, FOOTER } from './theme';
+
 
 @inject('bluetoothStore')
 @observer

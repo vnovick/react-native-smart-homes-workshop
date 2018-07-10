@@ -28,8 +28,10 @@ export class LightsScreen extends Component {
           data={this.props.store.lightsList}
           renderItem={({item}) => (
             <LightComponent data={item} onChangeState={
-              //TODO: Change light state by calling respective function on a store
-              (state) => this.props.store.changeLightState(item.id, state)
+              (state) => {
+                //TODO: Change light state by calling respective function on a store
+                this.props.store.changeLightState(item.id, state)
+              }
             }
               onLightClick={() => this.props.store.setActiveLightBulb(item) }
             />
