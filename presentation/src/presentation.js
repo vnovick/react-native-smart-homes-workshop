@@ -234,7 +234,7 @@ export default class Presentation extends React.Component {
           </Heading>
           <List ordered type="1">
             <ListItem {...listItemProps} textColor="secondary" lineHeight={2}>
-              Clone: <span style={{color: colors.lightBlue}} href="http://github.com/vnovick/repourl">http://github.com/vnovick/repourl</span>
+              Clone: <a style={{color: colors.lightBlue}} href="https://github.com/vnovick/react-native-smart-homes-workshop.git">https://github.com/vnovick/react-native-smart-homes-workshop.git</a>
             </ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Search for bridges</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Connect bridge</ListItem>
@@ -396,7 +396,7 @@ export default class Presentation extends React.Component {
             Workshop part 2 - Instructions
           </Heading>
           <List>
-            <ListItem {...listItemProps}>Clone the repo: <span>http://github.com/vnovick/repolink</span></ListItem>
+            <ListItem {...listItemProps}>Checkout <span style={{color: colors.lightBlue}}>step2</span></ListItem>
             <ListItem {...listItemProps }>Find out device name with NRF Connect app</ListItem>
             <ListItem {...listItemProps }>Load logs in Wireshark</ListItem>
             <ListItem {...listItemProps }>Get led bulb Service and Characteristic that allows to write</ListItem>
@@ -416,7 +416,7 @@ export default class Presentation extends React.Component {
           </Heading>
           <List ordered type="1">
             <ListItem {...listItemProps} textColor="secondary" lineHeight={2}>
-              Clone: <span style={{color: colors.lightBlue}} href="http://github.com/vnovick/repourl">http://github.com/vnovick/repourl</span>
+              checkout: <span style={{color: colors.lightBlue}}>step3</span>
             </ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Search for bridges</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Connect bridge</ListItem>
