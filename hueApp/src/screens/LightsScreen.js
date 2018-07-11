@@ -16,7 +16,6 @@ export class LightsScreen extends Component {
 
   componentDidMount(){
     //TODO: Get lights api call by calling action on mobx store
-    this.props.store.getLights();
   }
 
   _keyExtractor = (item, index) => item.id
@@ -30,7 +29,6 @@ export class LightsScreen extends Component {
             <LightComponent data={item} onChangeState={
               (state) => {
                 //TODO: Change light state by calling respective function on a store
-                this.props.store.changeLightState(item.id, state)
               }
             }
               onLightClick={() => this.props.store.setActiveLightBulb(item) }

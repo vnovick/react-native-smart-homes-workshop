@@ -14,7 +14,6 @@ export class HomeScreen extends Component {
 
   componentDidMount(){
     //TODO: Check initial setup by calling action on the store
-    this.props.store.checkInitialSetup()
   }
 
 

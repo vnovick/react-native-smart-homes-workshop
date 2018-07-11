@@ -39,31 +39,24 @@ export default class hueStore {
   @computed
   get baseApiUrl() {
     // TODO: Structure base api url
-    return `${this.activeBridgeIP}/api/${this.userName}`
+    return ``
   }
 
 
   @action
   async checkInitialSetup(){
-    // TODO: retrieve bridge IP and userName from AsyncStorage
-    // TODO: If there are no bridge Ip or username - seacrch for bridge
+    // TODO: retrieve "bridgeIp" and "userName" from AsyncStorage
+    // TODO: If there are no bridge Ip or username - seacrch for bridge (this.searchForBridge) if there are set up observables and navigate to "Lights"
     // TODO: Bonus: check if bridge ip is not valid anymore
-
-    const bridgeIp = await AsyncStorage.getItem('bridgeIp');
-    const userName = await AsyncStorage.getItem('userName');
-
-    if (!bridgeIp && !userName) {
-      this.searchForBridge()
-    } else {
-      this.userName = userName;
-      this.activeBridgeIP = bridgeIp;
-      navigate('Lights')
-    }
   }
 
   @action
   async searchForBridge(){
-    //TODO: use Philips Hue UPNP discovery service to search for bridges
+    /* TODO: 
+     use Philips Hue UPNP discovery service to search for bridges (https://www.meethue.com/api/nupnp), 
+     update "bridgeList" observable
+     set loading as false
+    */
 
     const blob = await fetch(`https://www.meethue.com/api/nupnp`);
     const response = await blob.json();
@@ -74,57 +67,30 @@ export default class hueStore {
 
   @action 
   async connectToBridge(bridge){
-    //TODO: Store bridge credentials in AsyncStorage
-    // TODO: get userName from Philips Hue api and update store username
-    this.activeBridgeIP = bridge.internalipaddress;
-    AsyncStorage.setItem('bridgeIp', this.activeBridgeIP);
-    await this.getHueUserName()
+    /*TODO: Store bridge credentials in AsyncStorage ("bridgeIp")
+     - set activeBridgeIP observable on the store
+    */
+  
+    // TODO: call "getHueUserName" on the store
   }
 
   @action
   async getHueUserName() {
-    //TODO: Get Hue user name
-    //TODO: Set username into AsyncStorage 
+    //TODO: Get Hue user name 
+    //TODO: Set username into AsyncStorage and store ("this.userName")
     //TODO: Navigate to Lights screen
-    const blob = await fetch(`http://${this.activeBridgeIP}/api/`, {
-      method: "POST",
-      body: JSON.stringify({
-        devicetype: "my_hue#Vladimir Novick"
-      })
-    })
-
-    const response = await blob.json();
-
-    if (response[0].error) {
-      alert(response[0].error.description)
-    } else {
-      this.userName = response[0].success.username
-      AsyncStorage.setItem('userName', this.userName);
-      navigate('Lights')
-    }
   }
 
   @action
   async getLights(){
     //TODO: getLigts action - call Philips Hue Light API
-    //TODO: Transform Lights object into Array and store in bridgeList observable
-    const blob = await fetch(`http://${this.baseApiUrl}/lights`);
-    const response = await blob.json();
-    this.lightsList = Object.entries(response).map(entry => ({
-      id: entry[0],
-      ...entry[1]
-    }));
+    //TODO: Transform Lights object into Array and store in lightsList observable
   }
 
   @action
   async changeLightState(id, state){
     //TODO: change light state
-    //TODO: Refetch lights after state change
-    const blob = await fetch(`http://${this.baseApiUrl}/lights/${id}/state`, {
-      method: "PUT",
-      body: JSON.stringify(state)
-    })
-    this.getLights();
+    //TODO: Refetch lights after state change ("this.getLights")
   }
 
 

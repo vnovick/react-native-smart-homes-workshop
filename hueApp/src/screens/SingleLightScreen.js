@@ -24,10 +24,7 @@ export class SingleLightScreen extends Component {
       <ColorPicker
         defaultColor={"ffff00"}
         onColorSelected={color => 
-          this.props.store.changeLightState(
-            this.props.store.activeLightBulb.id,
-            { xy: hex_to_xy(color).map(data => parseFloat(data)) }
-          )
+          alert(color)
         }
         style={styles.colorPicker}
         hideSliders
@@ -41,7 +38,9 @@ export class SingleLightScreen extends Component {
       <ScrollView style={SCREEN}>
           <LightComponent data={this.props.store.activeLightBulb} onChangeState={
               //TODO: Change light state by calling respective function on a store
-              (state) => this.props.store.changeLightState(this.props.store.activeLightBulb.id, state)
+              (state) => {
+                alert(state)
+              }
             }
           >
             <Slider 
