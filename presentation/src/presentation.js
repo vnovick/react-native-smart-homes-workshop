@@ -3,7 +3,6 @@ import React from 'react';
 /* eslint import/no-webpack-loader-syntax: off */
 // Import Spectacle Core tags
 import {
-  BlockQuote,
   Image,
   Cite,
   Code,
@@ -11,11 +10,9 @@ import {
   Heading,
   ListItem,
   List,
-  Quote,
   Slide,
   Text,
 } from 'spectacle';
-import CodeSlide from "spectacle-code-slide/src/CodeSlide";
 // Import theme
 import { theme, colors } from './theme';
 
@@ -244,6 +241,7 @@ export default class Presentation extends React.Component {
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Authenticate and get your user</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Turn on lightbulb and change it's brightness</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}><span style={{color: colors.emphasize }}>Bonus: </span>change lightbulb colors</ListItem>
+            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Docs: https://www.developers.meethue.com/documentation/getting-started</ListItem>
           </List>
         </Slide>
         <Slide {...bgSlideProps} >

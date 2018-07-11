@@ -30,7 +30,6 @@ export class BluetoothStore {
 
   @action setupBleManager = async () => {
     this.manager = new BleManager()
-    console.log(this.manager)
     const bleState = await this.manager.state()
     this.bleState = bleState
   }
