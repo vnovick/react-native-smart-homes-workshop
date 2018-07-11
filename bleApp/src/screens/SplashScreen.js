@@ -12,7 +12,6 @@ export class SplashScreen extends React.Component {
   componentDidMount() {
     this.animation.play()
     setTimeout(() => {
-      //TODO: Navigate to light bulb screen instead
       this.props.navigation.navigate('DevicesListScreen')
     }, 2000)
   }

@@ -9,9 +9,9 @@ import { ColorPicker } from 'react-native-color-picker'
 import { SCREEN, CONTAINER, colors } from '../theme';
 
 //TODO: Fill relevant UUID and charecters by using NRF Connect and reverse engineering logs
-const LEDBULUBNAME = 'LEDBLE-78602DC1'
-const LED_BULB_SERVICE_UUID = '0000ffe5-0000-1000-8000-00805f9b34fb'
-const LED_BULB_SERVICE_CHAR = '0000ffe9-0000-1000-8000-00805f9b34fb'
+const LEDBULUBNAME = ''
+const LED_BULB_SERVICE_UUID = ''
+const LED_BULB_SERVICE_CHAR = ''
 
 
 @inject('bluetoothStore')
@@ -29,36 +29,17 @@ export class LightBulbScreen extends React.Component {
   }
 
   async setLightBulbColor(color){
-    //TODO: Set lightbulb value according to reverse engineered format (Hint: Use Buffer package to send it as base64)
-    const value = new Buffer(`56${color}00f0aa`, 'hex').toString('base64')
-    const response = await this.props.bluetoothStore
-      .connectedDevice
-      .writeCharacteristicWithResponseForService(
-        LED_BULB_SERVICE_UUID,
-        LED_BULB_SERVICE_CHAR,
-        value
-      )
+    //TODO: Set lightbulb value according to reverse engineered format (Hint: Use Buffer package to send it as base64) Hint2: writeCharacteristicWithResponseForService
   }
   
 
   scanForDevices(){
     //TODO: Scan for devices
-    this.props.bluetoothStore.scanDevices()
   }
 
   connectToLightBulb = async () => {
     //TODO: Connect to light bulb.
     // TODO: Important! There is 30 seconds connection limit for the sake other workshop attendees to be able to connect
-    try {
-      const response = await this.props.bluetoothStore.connectDevice(this.lightBulb)
-      this.setState({
-        error: JSON.stringify(response)
-      })
-    } catch (e){
-      this.setState({
-        error: `Error occured: ${e.message}`
-      })
-    }
   }
 
   toggleLightBulb = (color) => {
@@ -106,17 +87,13 @@ export class LightBulbScreen extends React.Component {
 
   get lightBulb(){
     //TODO: Return light bulb if exist
-    const { deviceList } = this.props.bluetoothStore
-    return deviceList
-      .filter(device => device.localName === LEDBULUBNAME)[0]
   }
 
   renderStatusView = () => (
-    //TODO: Render status view with connect light bulb button and lightbulb name
+    //TODO: Add scan for devices button
     //TODO: Disable button if no lightbulb found
     <View style={[SCREEN, styles.container]}>
       <Card title={this.state.error}>
-        <Button title="Search for devices" onPress={() => this.scanForDevices()}/>
         <Text>
           { 
             JSON.stringify(
@@ -126,7 +103,6 @@ export class LightBulbScreen extends React.Component {
         </Text>
         <Text>{this.lightBulb ? this.lightBulb.name : 'No Light Bulb found'}</Text>
         <Button
-          disabled={!Boolean(this.lightBulb)}
           title='Connect to LightBulb' 
           onPress={() => this.connectToLightBulb()}/>
       </Card>
