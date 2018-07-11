@@ -91,6 +91,19 @@ const listItemProps = {
 }
 
 export default class Presentation extends React.Component {
+
+  state = {
+    bridgeIp: ''
+  }
+
+  async componentDidMount(){
+    const blob = await fetch('https://www.meethue.com/api/nupnp');
+    const response = await blob.json();
+    this.setState({
+      bridgeIp: response.length > 0 ? response[0].internalipaddress : ''
+    })
+  }
+
   render() {
     return (
       <Deck
@@ -203,13 +216,15 @@ export default class Presentation extends React.Component {
           <iframe src="https://www.meethue.com/api/nupnp" width="100%" height="30px" style={{ border: 'none', maxWidth: "600px", backgroundColor: 'white', marginTop: '50px' }} />
         </Slide>
         <Slide>
-          <Heading size={4} lineHeight={1} textColor="secondary">
+          <Heading size={5} lineHeight={1} textColor="secondary">
             Access your Philips Hue Debug console
           </Heading>
           <Text textColor="secondary" textSize={28}>
-            http://[philips hue bridge ip]/debug/clip.html
+            {`http://${this.state.bridgeIp}/debug/clip.html`}
           </Text>
-          <iframe src="http://10.0.0.1/debug/clip.html" width="100%" height="800px" style={{ border: 'none', maxWidth: "600px" }}/>
+          { this.state.bridgeIp && 
+            <iframe src={`http://${this.state.bridgeIp}/debug/clip.html`} width="100%" height="800px" style={{ border: 'none', maxWidth: "600px" }} />
+          }
         </Slide>
         <Slide {...bgSlideProps} >
           <Heading { ...headerProps }>
@@ -318,8 +333,8 @@ export default class Presentation extends React.Component {
           </Heading>
           <List>
             <ListItem {...listItemProps}>Discover bluetooth devices</ListItem>
-            <ListItem {...listItemProps}>Get Services and Charachteristics data</ListItem>
-            <ListItem {...listItemProps}>Write charachteristics from the app</ListItem>
+            <ListItem {...listItemProps}>Get Services and Characteristics data</ListItem>
+            <ListItem {...listItemProps}>Write characteristics from the app</ListItem>
             <ListItem {...listItemProps}>Ability to advertise</ListItem>
           </List>
         </Slide>
@@ -386,7 +401,7 @@ export default class Presentation extends React.Component {
             <ListItem {...listItemProps}>Clone the repo: <span>http://github.com/vnovick/repolink</span></ListItem>
             <ListItem {...listItemProps }>Find out device name with NRF Connect app</ListItem>
             <ListItem {...listItemProps }>Load logs in Wireshark</ListItem>
-            <ListItem {...listItemProps }>Get led bulb Service and Charachteristic that allows to write</ListItem>
+            <ListItem {...listItemProps }>Get led bulb Service and Characteristic that allows to write</ListItem>
             <ListItem {...listItemProps }>Bonus: Compare log entries and understand how light value should look like</ListItem>
             <ListItem {...listItemProps }>Submit your results:</ListItem>
           </List>
