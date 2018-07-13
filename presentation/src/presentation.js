@@ -236,6 +236,9 @@ export default class Presentation extends React.Component {
             <ListItem {...listItemProps} textColor="secondary" lineHeight={2}>
               Clone: <a style={{color: colors.lightBlue}} href="https://github.com/vnovick/react-native-smart-homes-workshop.git">https://github.com/vnovick/react-native-smart-homes-workshop.git</a>
             </ListItem>
+            <ListItem {...listItemProps} textColor="secondary" lineHeight={2}>
+              Clone: <a style={{color: colors.lightBlue}} href="https://github.com/vnovick/react-native-smart-homes-workshop.git">https://github.com/vnovick/react-native-smart-homes-workshop.git</a>
+            </ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Search for bridges</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Connect bridge</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Authenticate and get your user</ListItem>
@@ -397,13 +400,12 @@ export default class Presentation extends React.Component {
           </Heading>
           <List>
             <ListItem {...listItemProps}>Checkout <span style={{color: colors.lightBlue}}>step2</span></ListItem>
-            <ListItem {...listItemProps }>Find out device name with NRF Connect app</ListItem>
+            <ListItem {...listItemProps }>Find out device name with NRF Connect app. starting with LED or just any device</ListItem>
             <ListItem {...listItemProps }>Load logs in Wireshark</ListItem>
+            <ListItem {...listItemProps }>use btatt.opcode.method==0x12 to filter out results</ListItem>
             <ListItem {...listItemProps }>Get led bulb Service and Characteristic that allows to write</ListItem>
             <ListItem {...listItemProps }>Bonus: Compare log entries and understand how light value should look like</ListItem>
-            <ListItem {...listItemProps }>Submit your results:</ListItem>
           </List>
-          <Image src={images.qrForm} width="20%"/>
         </Slide>
         <Slide {...bgSlideProps} >
           <Heading { ...headerProps }>
@@ -418,9 +420,10 @@ export default class Presentation extends React.Component {
             <ListItem {...listItemProps} textColor="secondary" lineHeight={2}>
               checkout: <span style={{color: colors.lightBlue}}>step3</span>
             </ListItem>
-            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Search for bridges</ListItem>
-            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Connect bridge</ListItem>
-            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Authenticate and get your user</ListItem>
+            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>cd bleApp</ListItem>
+            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Install Carthage</ListItem>
+            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>yarn install && react-native link</ListItem>
+            <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Complete todo comments</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Turn on lightbulb and change it's brightness</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}><span style={{color: colors.emphasize }}>Bonus: </span>change lightbulb colors</ListItem>
           </List>
