@@ -236,9 +236,6 @@ export default class Presentation extends React.Component {
             <ListItem {...listItemProps} textColor="secondary" lineHeight={2}>
               Clone: <a style={{color: colors.lightBlue}} href="https://github.com/vnovick/react-native-smart-homes-workshop.git">https://github.com/vnovick/react-native-smart-homes-workshop.git</a>
             </ListItem>
-            <ListItem {...listItemProps} textColor="secondary" lineHeight={2}>
-              Clone: <a style={{color: colors.lightBlue}} href="https://github.com/vnovick/react-native-smart-homes-workshop.git">https://github.com/vnovick/react-native-smart-homes-workshop.git</a>
-            </ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Search for bridges</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Connect bridge</ListItem>
             <ListItem style={{fontSize: 30, margin: 16}} textColor="secondary" lineHeight={2}>Authenticate and get your user</ListItem>
